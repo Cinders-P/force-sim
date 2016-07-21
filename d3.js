@@ -21,8 +21,8 @@ $(function() {
 
 
 		var simulation = d3.forceSimulation()
-		.force("link", d3.forceLink().distance(80).strength(1).id(function(d) { return d.country; })) //default distance is 30. adding the strength(1) makes it much easier to pull  around
-		.force("charge", d3.forceManyBody().strength(-40)) // negative value for repelling force, positive for attracting
+		.force("link", d3.forceLink().distance(80).strength(0.3).id(function(d) { return d.country; })) //default distance is 30. adding the strength makes it much easier to pull  around
+		.force("charge", d3.forceManyBody().strength(-10)) // negative value for repelling force, positive for attracting
 		.force("center", d3.forceCenter(width / 2, height / 2))
 		.force('collide', d3.forceCollide(10)); // treats each node as a circle with radius 10. Makes it so the flags won't overlap
 
@@ -60,7 +60,7 @@ $(function() {
 		}
 
 		function dragstarted(d) {
-		  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+		  if (!d3.event.active) simulation.alphaTarget(1).restart(); // affects movespd of the flags
 		  d.fx = d.x;
 		  d.fy = d.y;
 		}
@@ -71,7 +71,6 @@ $(function() {
 		}
 
 		function dragended(d) {
-		  if (!d3.event.active) simulation.alphaTarget(0);
 		  d.fx = null;
 		  d.fy = null;
 		}
