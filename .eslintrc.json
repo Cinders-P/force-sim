@@ -1,0 +1,12 @@
+{
+  "extends": ["airbnb-base"],
+  "rules": {
+	  "no-console": "off",
+	  "indent": ["error", "tab"],
+	 "quotes": ["error", "single", {"avoidEscape": true, "allowTemplateLiterals": true}],
+	 "no-param-reassign": "off"
+	},
+	"globals": {
+    "$": false
+	}
+}
